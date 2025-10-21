@@ -25,12 +25,10 @@ describe FactoryBotRails::Railtie do
     end
 
     context "when the factory definitions have NOT been updated" do
-      it "reloads the factory definitions" do
-        allow(FactoryBot).to receive(:reload)
+      it "does NOT reload the factory definitions" do
+        expect(FactoryBot).not_to receive(:reload)
 
         reload_rails!
-
-        expect(FactoryBot).to have_received(:reload).at_least(1).times
       end
     end
 
